@@ -1,0 +1,9 @@
+%h1 Categories
+- @categories.each do |category|
+  .box
+    .link-box= link_to category.name, category_path(category)
+    .image-box
+      - if category.products.present?
+        = image_tag category.products.order(score: :desc).first.image
+      - else
+        = placeholdit_image_tag "150", text: "no products in category"

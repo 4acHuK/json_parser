@@ -1,0 +1,11 @@
+%h1= @category.name
+- @products.each_with_index do |product, index|
+  .box
+    = "position: #{index+1}"
+    .link-box= link_to product.name, product.url, target: :_blank
+    .image-box
+      - if product.image.present?
+        = image_tag product.image
+      - else
+        = placeholdit_image_tag "150", text: "no products in category"
+    .price-box= "price: #{product.price}"
